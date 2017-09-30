@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'puppies',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,6 @@ REST_FRAMEWORK = {
     ],
     'PAGE_SIZE': 10,
 }
+
+MEDIA_ROOT = '/Users/hoylemd/puppies/media/'
+MEDIA_URL = '/media/'
