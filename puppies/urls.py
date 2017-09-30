@@ -1,13 +1,8 @@
 from django.conf.urls import url, include
-from django.contrib.auth.models import User
-from rest_framework import routers, viewsets
+from rest_framework import routers
 
-from .serializers import UserSerializer
+from .views import UserViewSet
 
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
