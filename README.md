@@ -9,7 +9,8 @@ Installation
 `mkvirtualenv puppies`
 `workon puppies`
 `pip install -r requirements.txt`
-'./manage.py migrate'
+`./manage.py migrate`
+`./manage.py createsuperuser`  And follow the instructions
 
 Running
 -------
