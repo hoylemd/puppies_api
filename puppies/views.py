@@ -8,6 +8,9 @@ from .serializers import UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
 
 
 class CreateUserView(CreateAPIView):

@@ -5,7 +5,7 @@ BASE_URL=http://127.0.0.1:8000
 USERNAME='admin'
 PASSWORD='secret123'
 
-command="curl -H \"$HEADERS\" -u $USERNAME:$PASSWORD $BASE_URL/users/"
+command="curl -H \"$HEADERS\" $BASE_URL/users/"
 
 echo ">>$command"
 echo

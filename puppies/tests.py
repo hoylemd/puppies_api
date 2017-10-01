@@ -12,10 +12,11 @@ class UserListTest(TestCase):
 
         self.administrator = get_user_model().objects.create(
             username='admin',
-            password='secret123',
             is_staff=True,
             is_superuser=True,
         )
+        self.administrator.set_password('secret123')
+        self.administrator.save()
 
     def test_create_user(self):
         """Should create a new user record unauthenticated"""
