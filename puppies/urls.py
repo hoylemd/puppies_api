@@ -8,7 +8,7 @@ users_router = routers.DefaultRouter()
 users_router.register(r'users', UserViewSet)
 
 urlpatterns = [
-    url(r'^users/register', CreateUserView.as_view(), name='register'),
+    url(r'^register/', CreateUserView.as_view(), name='register'),
     url(r'^', include(users_router.urls)),
     url(r'^api-auth/',
         include('rest_framework.urls', namespace='rest_framework'))

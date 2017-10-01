@@ -16,4 +16,4 @@ command="curl -H \"$HEADERS\" -X POST -d $DATA $BASE_URL/register"
 echo ">>$command"
 echo
 
-echo $($command)
+echo $($command) | python -m json.tool
