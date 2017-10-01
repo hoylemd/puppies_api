@@ -66,3 +66,35 @@ class UserListTest(TestCase):
         self.assertIn(sevro.username, response.content)
         self.assertIn(mustang.username, response.content)
         self.assertIn(self.administrator.username, response.content)
+
+
+class UserDetailsTest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+
+        self.administrator = get_user_model().objects.create(
+            username='admin',
+            is_staff=True,
+            is_superuser=True,
+        )
+        self.administrator.set_password('secret123')
+        self.administrator.save()
+
+        self.url = reverse('user-detail', kwargs={'pk': self.administrator.id})
+
+    def test_update_name(self):
+        """Should allow users to change their first and last name"""
+        self.client.login(username='admin', password='secret123')
+
+        data = {
+            'first_name': 'Fitchner',
+            'last_name': 'au Barca',
+        }
+
+        response = self.client.patch(self.url, data)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('admin', response.content)
+        self.administrator.refresh_from_db()
+        self.assertEqual(self.administrator.first_name, 'Fitchner')
+        self.assertEqual(self.administrator.last_name, 'au Barca')
