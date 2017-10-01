@@ -2,7 +2,8 @@ from django.contrib.auth import get_user_model
 from rest_framework import viewsets, permissions
 from rest_framework.generics import CreateAPIView
 
-from .serializers import UserSerializer
+from .serializers import UserSerializer, PuppySerializer
+from .models import Puppy
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -11,6 +12,11 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [
         permissions.IsAuthenticated
     ]
+
+
+class PuppyViewSet(viewsets.ModelViewSet):
+    queryset = Puppy.objects.all()
+    serializer_class = PuppySerializer
 
 
 class CreateUserView(CreateAPIView):

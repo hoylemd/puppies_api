@@ -34,3 +34,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class PuppySerializer(serializers.HyperlinkedModelSerializer):
     class meta:
         model = Puppy
+        fields = (
+            'url',
+            'owner',
+            'file',
+            'title',
+            'body',
+        )
