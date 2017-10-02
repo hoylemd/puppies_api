@@ -7,7 +7,7 @@ from .models import Puppy
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = get_user_model().objects.all()
+    queryset = get_user_model().objects.order_by('id')
     serializer_class = UserSerializer
     permission_classes = [
         permissions.IsAuthenticated
