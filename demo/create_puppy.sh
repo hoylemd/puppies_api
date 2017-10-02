@@ -9,9 +9,9 @@ BODY="isn't+he+JUST+SO+CUTE!!!"
 
 command="curl -X POST"
 command="$command -u $USERNAME:$PASSWORD"
-command="$command --data-urlencode title='$TITLE'"
-command="$command --data-urlencode body='$BODY'"
-command="$command --data-urlencode file=@$FILE_PATH"
+command="$command -F title='$TITLE'"
+command="$command -F body='$BODY'"
+command="$command -F file=@$FILE_PATH"
 command="$command $BASE_URL/puppies/"
 
 echo ">>$command"
