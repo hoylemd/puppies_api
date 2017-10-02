@@ -40,8 +40,10 @@ class PuppySerializer(serializers.HyperlinkedModelSerializer):
             'title',
             'body',
             'owner',
+            'created',
+            'modified',
         )
-        read_only_fields = ('owner',)
+        read_only_fields = ('owner', 'created', 'modified')
 
     def create(self, validated_data):
         return Puppy.objects.create(
