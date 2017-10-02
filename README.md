@@ -19,3 +19,7 @@ Running
 Testing
 -------
 './manage.py test'
+
+Demo Scripts
+------------
+create_user: Demonstrates how to sign up a new user

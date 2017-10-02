@@ -11,7 +11,7 @@ EMAIL='cassius@aubelowna.com'
 DATA="username=$USERNAME&password=$PASSWORD&first_name=$FIRST_NAME"
 DATA="$DATA&last_name=$LAST_NAME&email=$EMAIL"
 
-command="curl -H \"$HEADERS\" -X POST -d $DATA $BASE_URL/register"
+command="curl -H \"$HEADERS\" -X POST -d $DATA $BASE_URL/register/"
 
 echo ">>$command"
 echo

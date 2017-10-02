@@ -2,7 +2,10 @@
 HEADERS='Accept:application/json;'
 BASE_URL=http://127.0.0.1:8000
 
-command="curl -H \"$HEADERS\" $BASE_URL/users/"
+USERNAME='imperatorsboy'
+PASSWORD='4julian'
+
+command="curl -H \"$HEADERS\" -u $USERNAME:$PASSWORD $BASE_URL/users/"
 
 echo ">>$command"
 echo
