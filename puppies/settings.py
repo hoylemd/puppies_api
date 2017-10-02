@@ -135,5 +135,5 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
-MEDIA_ROOT = '/Users/hoylemd/puppies/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
