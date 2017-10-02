@@ -32,12 +32,21 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PuppySerializer(serializers.HyperlinkedModelSerializer):
-    class meta:
+    class Meta:
         model = Puppy
         fields = (
             'url',
-            'owner',
             'file',
             'title',
             'body',
+            'owner',
+        )
+        read_only_fields = ('owner',)
+
+    def create(self, validated_data):
+        return Puppy.objects.create(
+            file=validated_data['file'],
+            title=validated_data['title'],
+            body=validated_data['body'],
+            owner=self.context['request'].user,
         )
