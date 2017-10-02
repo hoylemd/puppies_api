@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from rest_framework import routers
 
-from .views import UserViewSet, PuppyViewSet, CreateUserView, FeedView
+from .views import UserViewSet, PuppyViewSet, CreateUserView, UsersPuppiesView
 
 
 router = routers.DefaultRouter()
@@ -11,8 +11,8 @@ router.register(r'puppies', PuppyViewSet)
 urlpatterns = [
     url(r'^register/', CreateUserView.as_view(), name='register'),
     url(
-        r'^feeds/(?P<username>[a-zA-Z0-9]{4,32})/',
-        FeedView.as_view(),
+        r'^users/(?P<user_pk>[0-9]{1,3})/posts/',
+        UsersPuppiesView.as_view(),
         name='feed',
     ),
     url(r'^', include(router.urls)),

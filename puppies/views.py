@@ -19,11 +19,11 @@ class PuppyViewSet(viewsets.ModelViewSet):
     serializer_class = PuppySerializer
 
 
-class FeedView(ListAPIView):
+class UsersPuppiesView(ListAPIView):
     serializer_class = PuppySerializer
 
     def get_queryset(self):
-        user = get_user_model().objects.get(username=self.kwargs['username'])
+        user = get_user_model().objects.get(pk=self.kwargs['user_pk'])
         return user.puppy_set.order_by('-created')
 
 
