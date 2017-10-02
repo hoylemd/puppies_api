@@ -15,7 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class PuppyViewSet(viewsets.ModelViewSet):
-    queryset = Puppy.objects.all()
+    queryset = Puppy.objects.all().order_by('-created')
     serializer_class = PuppySerializer
 
 
