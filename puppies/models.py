@@ -4,7 +4,7 @@ from django_extensions.db.models import TimeStampedModel
 
 
 def user_directory_path(instance, filename):
-    return 'users/{}/{}'.format(filename)
+    return 'users/{}/{}'.format('admin', filename)
 
 
 class Puppy(TimeStampedModel):
