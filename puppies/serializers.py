@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from rest_framework import serializers
+from rest_framework import serializers, exceptions
 
 from .models import Puppy
 
@@ -32,19 +32,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PuppySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Puppy
-        fields = (
-            'url',
-            'file',
-            'title',
-            'body',
-            'owner',
-            'created',
-            'modified',
-        )
-        read_only_fields = ('owner', 'created', 'modified')
-
     def create(self, validated_data):
         return Puppy.objects.create(
             file=validated_data['file'],
@@ -52,3 +39,24 @@ class PuppySerializer(serializers.HyperlinkedModelSerializer):
             body=validated_data['body'],
             owner=self.context['request'].user,
         )
+
+    def validate(self, data):
+        if self.context['request'].user != self.instance.owner:
+            raise exceptions.PermissionDenied(
+                "Cannot edit posts owned by another user.",
+            )
+
+        return data
+
+    class Meta:
+        model = Puppy
+        fields = (
+            'url',
+            'owner',
+            'title',
+            'body',
+            'file',
+            'created',
+            'modified',
+        )
+        read_only_fields = ('owner', 'created', 'modified')
